@@ -50,14 +50,9 @@ def compute_dvector(audio_file):
     n_mels = 40
     n_components = 10
 
-    frame_length2 = int(sr2 * 0.025)  # 25 ms
-    hop_length2 = int(sr2 * 0.010)  # 10 ms
-    n_fft2 = 512
-    n_mels2 = 40
-    n_components2 = 10
+    
 
-    S = librosa.feature.melspectrogram(y=audio, sr=sr, n_fft=n_fft,
-                                    hop_length=hop_length, n_mels=n_mels)
+    S = librosa.feature.melspectrogram(y=audio, sr=sr, n_fft=n_fft,hop_length=hop_length, n_mels=n_mels)
 
     # Compute the d-vector by averaging the normalized PCA-transformed MFCC features
     S = np.log(S + 1e-9)
