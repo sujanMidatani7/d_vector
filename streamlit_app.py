@@ -35,7 +35,7 @@ def extract_mfcc_features(audio_file):
 
 def compute_dvector(mfcc_features):
     # Apply PCA to reduce the dimensionality of the MFCC features
-    st.write(mfcc_features)
+    st.write(mfcc_features.shape)
     pca = PCA(n_components=120)
     pca.fit(mfcc_features)
     mfcc_pca = pca.transform(mfcc_features)
