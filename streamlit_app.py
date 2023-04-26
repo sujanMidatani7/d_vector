@@ -75,7 +75,7 @@ def compute_dvector(audio_file):
     return d
 def compute_similarity(dvector1, dvector2):
     # Compute the cosine similarity between the d-vectors
-    similarity = cosine_similarity(dvector1, dvector2)[0][0]
+    similarity = cosine_similarity([dvector1], [dvector2])[0][0]
     return similarity
 
 
