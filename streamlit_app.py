@@ -2,18 +2,18 @@ import streamlit as st
 import torch
 import torchaudio
 from sklearn.decomposition import PCA
-from sklearn.metrics.pairwise import cosine_similarity
+# from sklearn.metrics.pairwise import cosine_similarity
 
 import numpy as np
 
 # Load the encoder classifier model
 
-# def cosine_similarity(x1, x2):
-#     dot_product = torch.sum(x1 * x2, dim=-1)
-#     norm_x1 = torch.norm(x1, dim=-1)
-#     norm_x2 = torch.norm(x2, dim=-1)
-#     cosine_similarity = dot_product / (norm_x1 * norm_x2)
-#     return cosine_similarity
+def compute_similarity(x1, x2):
+    dot_product = torch.sum(x1 * x2, dim=-1)
+    norm_x1 = torch.norm(x1, dim=-1)
+    norm_x2 = torch.norm(x2, dim=-1)
+    cosine_similarity = dot_product / (norm_x1 * norm_x2)
+    return cosine_similarity
 def extract_mfcc_features(audio_file):
     # Load the audio file
     y, sr = torchaudio.load(file)
@@ -50,9 +50,9 @@ def compute_dvector(mfcc_features):
     dvector = np.mean(mfcc_pca_norm, axis=0)
 
     return dvector
-def compute_similarity(dvector1, dvector2):
-    # Compute the cosine similarity between the d-vectors
-    similarity = cosine_similarity([dvector1], [dvector2])[0][0]
+# def compute_similarity(dvector1, dvector2):
+#     # Compute the cosine similarity between the d-vectors
+#     similarity = cosine_similarity([dvector1], [dvector2])[0][0]
 
     return similarity
 def softmax(z):
