@@ -27,7 +27,7 @@ def extract_mfcc_features(audio_file):
     st.write(mfcc_features.shape)
     n_features, n_samples = mfcc_features.shape
     mfcc_features = mfcc_features.reshape(n_features, -1)
-    mfcc_features = mfcc_features.reshape(n_features*n_samples, 3)
+    mfcc_features = mfcc_features.reshape(n_features*n_samples, 2)
 
 
     return mfcc_features
