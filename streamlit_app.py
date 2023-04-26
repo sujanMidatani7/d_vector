@@ -55,7 +55,7 @@ def compute_dvector(mfcc_features):
 #     # Compute the cosine similarity between the d-vectors
 #     similarity = cosine_similarity([dvector1], [dvector2])[0][0]
 
-    return similarity
+#     return similarity
 def softmax(z):
     """Computes softmax function.
     z: array of input values.
