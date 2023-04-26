@@ -86,8 +86,8 @@ st.write("Comparision of two audio samples using xvectors.")
 # Create audio input component
 audio_file1 = st.file_uploader("Choose 1st audio  file", type=["mp3", "wav", "flac"])
 
-dvector1=torch.rand(2,1)
-dvector2=torch.rand(2,1)
+dvector1=torch.rand(120,1)
+dvector2=torch.rand(120,1)
 if audio_file1 is not None:
     
     dvector1 = compute_dvector(audio_file1)
