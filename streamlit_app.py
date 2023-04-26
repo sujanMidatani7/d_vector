@@ -3,7 +3,7 @@ import torch
 import torchaudio
 from sklearn.decomposition import PCA
 # from sklearn.metrics.pairwise import cosine_similarity
-
+import librosa
 import numpy as np
 
 # Load the encoder classifier model
