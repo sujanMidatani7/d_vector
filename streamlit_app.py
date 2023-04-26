@@ -24,6 +24,7 @@ def extract_mfcc_features(audio_file):
     mfcc_delta = librosa.feature.delta(mfcc)
     mfcc_delta2 = librosa.feature.delta(mfcc, order=2)
     mfcc_features = np.concatenate((mfcc, mfcc_delta, mfcc_delta2), axis=0)
+    st.write(mfcc_features.shape)
     n_features, n_samples, n_channels = mfcc_features.shape
     mfcc_features = mfcc_features.reshape(n_features, -1)
     mfcc_features = mfcc_features.reshape(n_features*n_samples, n_channels)
