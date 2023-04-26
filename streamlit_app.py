@@ -17,7 +17,7 @@ def compute_similarity(x1, x2):
 def extract_mfcc_features(audio_file):
     # Load the audio file
     y, sr = torchaudio.load(audio_file)
-
+    y=y.numpy()
     # Compute the MFCC features
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=360)
     mfcc_delta = librosa.feature.delta(mfcc)
