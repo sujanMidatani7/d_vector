@@ -24,7 +24,7 @@ def extract_mfcc_features(audio_file):
     mfcc_delta2 = librosa.feature.delta(mfcc, order=2)
     mfcc_features = np.concatenate((mfcc, mfcc_delta,mfcc_delta2), axis=0)
 
-    return mfcc_features.T.reshape(-1,1)
+    return mfcc_features.T
 
 # def load_audio(file):
 #     # Load audio file using Torchaudio
@@ -75,12 +75,12 @@ mfcc_features2=torch.rand(2, 3,1)
 # Analyze audio properties when file is uploaded
 if audio_file1 is not None:
     mfcc_features1 = extract_mfcc_features(audio_file1)
-dvector1 = compute_dvector(mfcc_features1)
+    dvector1 = compute_dvector(mfcc_features1)
 
 audio_file2=st.file_uploader("Choose 2nd audio  file", type=["mp3", "wav", "flac"])
 if audio_file2 is not None:
     mfcc_features2 = extract_mfcc_features(audio_file2)
-dvector2 = compute_dvector(mfcc_features2)
+    dvector2 = compute_dvector(mfcc_features2)
 
 st.write("the similarity of the given two audio files is:")
 similarity = compute_similarity(dvector1, dvector2)
