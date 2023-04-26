@@ -73,6 +73,8 @@ audio_file1 = st.file_uploader("Choose 1st audio  file", type=["mp3", "wav", "fl
 mfcc_features1=torch.rand(2, 3,1)
 mfcc_features2=torch.rand(2, 3,1)
 # Analyze audio properties when file is uploaded
+dvector1=torch.rand(2, 3,1)
+dvector2=torch.rand(2, 3,1)
 if audio_file1 is not None:
     mfcc_features1 = extract_mfcc_features(audio_file1)
     dvector1 = compute_dvector(mfcc_features1)
