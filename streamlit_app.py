@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 # Load the encoder classifier model
-classifier = EncoderClassifier.from_hparams(source="speechbrain/spkrec-xvect-voxceleb", savedir="pretrained_models/spkrec-xvect-voxceleb")
+
 # def cosine_similarity(x1, x2):
 #     dot_product = torch.sum(x1 * x2, dim=-1)
 #     norm_x1 = torch.norm(x1, dim=-1)
