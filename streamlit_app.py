@@ -7,11 +7,12 @@ import librosa
 import numpy as np
 
 # Load the encoder classifier model
-
 def compute_similarity(x1, x2):
-    dot_product = torch.sum(x1 * x2, dim=-1)
-    norm_x1 = torch.norm(x1, dim=-1)
-    norm_x2 = torch.norm(x2, dim=-1)
+    x1_tensor = torch.tensor(x1)
+    x2_tensor = torch.tensor(x2)
+    dot_product = torch.sum(x1_tensor * x2_tensor, dim=-1)
+    norm_x1 = torch.norm(x1_tensor, dim=-1)
+    norm_x2 = torch.norm(x2_tensor, dim=-1)
     cosine_similarity = dot_product / (norm_x1 * norm_x2)
     return cosine_similarity
 def extract_mfcc_features(audio_file):
