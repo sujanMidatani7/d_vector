@@ -71,6 +71,7 @@ def compute_dvector(audio_file):
     x = np.mean(features, axis=1)
 # d = np.dot(np.dot(A, U.T), (x - mean))
     d=np.dot(A, U.T)
+    d = np.dot(np.dot(A, U.T), (x))
     return d
 def compute_similarity(dvector1, dvector2):
     # Compute the cosine similarity between the d-vectors
