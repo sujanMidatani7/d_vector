@@ -89,8 +89,11 @@ if audio_file2 is not None:
 
 st.write("the similarity of the given two audio files is:")
 similarity = compute_similarity(dvector1, dvector2)
-st.write(similarity)
-if similarity[0][0]>=0:
-    st.write("both are equal")
-else :
-    st.write("both are not equal")
+# st.write(similarity)
+try:
+    if similarity[0]>=0:
+        st.write("both are equal")
+    else :
+        st.write("both are not equal")
+except:
+    pass
