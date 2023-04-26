@@ -22,7 +22,7 @@ def extract_mfcc_features(audio_file):
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=360)
     mfcc_delta = librosa.feature.delta(mfcc)
     mfcc_delta2 = librosa.feature.delta(mfcc, order=2)
-    mfcc_features = np.concatenate((mfcc, mfcc_delta, mfcc_delta2), axis=0)
+    mfcc_features = np.concatenate((mfcc, mfcc_delta), axis=0)
 
     return mfcc_features.T
 
