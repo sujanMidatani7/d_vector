@@ -1,3 +1,2 @@
-pydub==0.25.1
 torchaudio==2.0.1
-speechbrain==0.5.7
+librosa==0.10.0
