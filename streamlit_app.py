@@ -9,6 +9,7 @@ import pinecone
 
 pinecone.init(api_key="f9571b23-70be-4556-893a-7342b0bb51d1", environment="us-central1-gcp")
 pc = pinecone
+st.write(pc.list_indexes())
 index = pc.Index('id-index')
 def compute_dvector(audio_file):
     st.write(audio_file)
