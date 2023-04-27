@@ -11,6 +11,7 @@ pinecone.init(api_key="f9571b23-70be-4556-893a-7342b0bb51d1", environment="us-ce
 pc = pinecone
 index = pc.Index('id-index')
 def compute_dvector(audio_file):
+    st.write(audio_file)
     speaker_name = (audio_file.split('/')[-1]).split('.')[0]
     audio, sr = librosa.load(audio_file, sr=16000)
     frame_length = int(sr * 0.025)  # 25 ms
