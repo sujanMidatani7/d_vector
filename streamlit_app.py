@@ -5,9 +5,13 @@ import torch
 from sklearn.metrics.pairwise import cosine_similarity
 import librosa
 import numpy as np
+import pinecone
 
+pinecone.init(api_key="f9571b23-70be-4556-893a-7342b0bb51d1", environment="us-central1-gcp")
+pc = pinecone()
+index = pc.Index('id-index')
 def compute_dvector(audio_file):
-
+    speaker_name = (audio_file.split('/')[-1]).split('.')[0]
     audio, sr = librosa.load(audio_file, sr=16000)
     frame_length = int(sr * 0.025)  # 25 ms
     hop_length = int(sr * 0.010)  # 10 ms
@@ -37,12 +41,19 @@ def compute_dvector(audio_file):
 # d = np.dot(np.dot(A, U.T), (x - mean))
     d=np.dot(A, U.T)
     d = np.dot(np.dot(A, U.T), (x))
-    return d
-def compute_similarity(dvector1, dvector2):
-    # Compute the cosine similarity between the d-vectors
-    similarity = cosine_similarity([dvector1], [dvector2])[0][0]
-    return similarity
-
+#     return d, speaker_name
+# def compute_similarity(dvector1, dvector2):
+#     # Compute the cosine similarity between the d-vectors
+#     similarity = cosine_similarity([dvector1], [dvector2])[0][0]
+#     return similarity
+    
+    res = index.query(
+    vector= list(d),
+    top_k=1,
+    include_values=True
+    )['matches'][0]
+    st.write(res['id'], res['score'])
+    return res['score'],res['id']
 
 # Define Streamlit app
 st.title("Audio Analysis")
@@ -52,24 +63,21 @@ st.write("Comparision of two audio samples using xvectors.")
 audio_file1 = st.file_uploader("Choose 1st audio  file", type=["mp3", "wav", "flac"])
 
 dvector1=torch.rand(120,1)
-dvector2=torch.rand(120,1)
+# dvector2=torch.rand(120,1)
 if audio_file1 is not None:
     
     dvector1 = compute_dvector(audio_file1)
 
-audio_file2=st.file_uploader("Choose 2nd audio  file", type=["mp3", "wav", "flac"])
-if audio_file2 is not None:
-#     mfcc_features2 = extract_mfcc_features(audio_file2)
-    dvector2 = compute_dvector(audio_file2)
+# audio_file2=st.file_uploader("Choose 2nd audio  file", type=["mp3", "wav", "flac"])
+# if audio_file2 is not None:
+# #     mfcc_features2 = extract_mfcc_features(audio_file2)
+#     dvector2 = compute_dvector(audio_file2)
 
-st.write("the similarity of the given two audio files is:")
-if audio_file2 is not None and audio_file1 is not None:
-    similarity = compute_similarity(dvector1, dvector2)
-    st.write(similarity)
+# st.write("the similarity of the given two audio files is:")
+
+#     similarity = compute_(dvector1, dvector2)
+#     st.write(similarity)
     try:
-        if similarity>=0.9:
-            st.write("both are equal")
-        else :
-            st.write("both are not equal")
+        st.write("Nearest Speaker Found :: "+dvector1[1]+" with score of :: "+dvector1[0])
     except:
         pass
