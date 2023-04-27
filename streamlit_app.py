@@ -12,7 +12,7 @@ pc = pinecone
 index = pc.Index('id-index')
 def compute_dvector(audio_file):
     st.write(audio_file)
-    speaker_name = (audio_file.split('/')[-1]).split('.')[0]
+    speaker_name = (audio_file.name.split('/')[-1]).split('.')[0]
     audio, sr = librosa.load(audio_file, sr=16000)
     frame_length = int(sr * 0.025)  # 25 ms
     hop_length = int(sr * 0.010)  # 10 ms
