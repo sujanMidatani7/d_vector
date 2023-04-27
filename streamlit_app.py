@@ -6,43 +6,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import librosa
 import numpy as np
 
-# # Load the encoder classifier model
-# # def compute_similarity(x1, x2):
-# #     x1_tensor = torch.tensor(x1)
-# #     x2_tensor = torch.tensor(x2)
-# #     dot_product = torch.sum(x1_tensor * x2_tensor, dim=-1)
-# #     norm_x1 = torch.norm(x1_tensor, dim=-1)
-# #     norm_x2 = torch.norm(x2_tensor, dim=-1)
-# #     cosine_similarity = dot_product / (norm_x1 * norm_x2)z
-# #     return cosine_similarity
-# def extract_mfcc_features(audio_file):
-#     # Load the audio file
-#     y, sr = librosa.load(audio_file,sr=16000)
-# #     y=y.numpy()
-#     # Compute the MFCC features
-#     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=360)
-#     mfcc_delta = librosa.feature.delta(mfcc)
-#     mfcc_delta2 = librosa.feature.delta(mfcc, order=2)
-#     mfcc_features = np.concatenate((mfcc, mfcc_delta, mfcc_delta2), axis=0)
-#     st.write(mfcc_features.shape)
-#     n_features, n_samples = mfcc_features.shape
-#     mfcc_features = mfcc_features.reshape(n_features, -1)
-#     mfcc_features = mfcc_features.reshape(n_features*n_samples, 2)
-
-
-#     return mfcc_features
-
-# def load_audio(file):
-#     # Load audio file using Torchaudio
-    
-#         waveform, sample_rate = 
-#         return waveform, sample_rate
-    
-
 def compute_dvector(audio_file):
-    # Apply PCA to reduce the dimensionality of the MFCC features
-#     mfcc_features=mfcc_features.reshape(-1,1)
-#     st.write(mfcc_features.shape)
+
     audio, sr = librosa.load(audio_file, sr=16000)
     frame_length = int(sr * 0.025)  # 25 ms
     hop_length = int(sr * 0.010)  # 10 ms
