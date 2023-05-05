@@ -51,7 +51,7 @@ def compute_dvector(audio_file):
     
     res = index.query(
     vector= list(d),
-    top_k=1,
+    top_k=3,
     include_values=True
     )['matches'][0]
     st.write(res['id'], res['score'])
@@ -83,3 +83,4 @@ if audio_file1 is not None:
         st.write("Nearest Speaker Found :: "+dvector1[1]+" with score of :: "+dvector1[0])
     except:
         pass
+3
