@@ -53,7 +53,7 @@ def compute_dvector(audio_file):
     vector= list(d),
     top_k=1,
     include_values=True
-    )['matches']
+    )['matches'][0]
     st.write(res)
     return res['score'],res['id']
 
