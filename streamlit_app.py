@@ -56,7 +56,7 @@ def compute_dvector(audio_file):
     )['matches'][0]
 #     st.write(res)
 #     return res['score'],res['id']
-    return "Nearest Speaker Found :: "+dvector1['id']+" with score of :: "+dvector1['score']
+    return "Nearest Speaker Found :: "+dvector1['id']+" with score of :: "+str(dvector1['score'])
 
 # Define Streamlit app
 st.title("Audio Analysis")
