@@ -49,14 +49,14 @@ def compute_dvector(audio_file):
 #     similarity = cosine_similarity([dvector1], [dvector2])[0][0]
 #     return similarity
     
-    res = index.query(
+    dvector1 = index.query(
     vector= list(d),
     top_k=1,
     include_values=True
     )['matches'][0]
 #     st.write(res)
 #     return res['score'],res['id']
-    return res
+    return "Nearest Speaker Found :: "+dvector1[1]+" with score of :: "+dvector1[0]
 
 # Define Streamlit app
 st.title("Audio Analysis")
@@ -69,7 +69,7 @@ audio_file1 = st.file_uploader("Choose 1st audio  file", type=["mp3", "wav", "fl
 # dvector2=torch.rand(120,1)
 if audio_file1 is not None:
     
-    dvector1 = compute_dvector(audio_file1)
+    rs = compute_dvector(audio_file1)
 
 # audio_file2=st.file_uploader("Choose 2nd audio  file", type=["mp3", "wav", "flac"])
 # if audio_file2 is not None:
@@ -82,7 +82,7 @@ if audio_file1 is not None:
 #     st.write(similarity)
     try:
 #         st.write("Nearest Speaker Found :: "+dvector1[1]+" with score of :: "+dvector1[0])
-           st.write(res)
+          st.write(rs)
     except:
         pass
 
