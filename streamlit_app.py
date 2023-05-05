@@ -41,7 +41,7 @@ def compute_dvector(audio_file):
     A = np.dot(np.dot(U, np.diag(np.sqrt(s))), U.T)
     x = np.mean(features, axis=1)
 # d = np.dot(np.dot(A, U.T), (x - mean))
-    d=np.dot(A, U.T)
+    d = np.dot(A, U.T)
     d = np.dot(np.dot(A, U.T), (x))
 #     return d, speaker_name
 # def compute_similarity(dvector1, dvector2):
@@ -54,17 +54,18 @@ def compute_dvector(audio_file):
     top_k=1,
     include_values=True
     )['matches'][0]
-    st.write(res)
-    return res['score'],res['id']
+#     st.write(res)
+#     return res['score'],res['id']
+    return res
 
 # Define Streamlit app
 st.title("Audio Analysis")
-st.write("Comparision of two audio samples using xvectors.")
+st.write("Comparision of two audio samples using dvectors.")
 
 # Create audio input component
 audio_file1 = st.file_uploader("Choose 1st audio  file", type=["mp3", "wav", "flac","m4a"])
 
-dvector1=(0,0)
+# dvector1=(0,0)
 # dvector2=torch.rand(120,1)
 if audio_file1 is not None:
     
@@ -80,7 +81,8 @@ if audio_file1 is not None:
 #     similarity = compute_(dvector1, dvector2)
 #     st.write(similarity)
     try:
-        st.write("Nearest Speaker Found :: "+dvector1[1]+" with score of :: "+dvector1[0])
+#         st.write("Nearest Speaker Found :: "+dvector1[1]+" with score of :: "+dvector1[0])
+           st.write(res)
     except:
         pass
 
