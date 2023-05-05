@@ -54,8 +54,8 @@ def compute_dvector(audio_file):
     top_k=3,
     include_values=True
     )['matches']
-    st.write(res['id'], res['score'])
-    return res['score'],res['id']
+    st.write(res)
+#     return res['score'],res['id']
 
 # Define Streamlit app
 st.title("Audio Analysis")
