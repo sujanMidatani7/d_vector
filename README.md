@@ -37,7 +37,7 @@ pip install -r requirements.txt
 3. Run the Streamlit app:
 
 ```shell
-streamlit run main.py
+streamlit run dVectorSA.py
 ```
 
 4. The application will open in your browser. You can select the first audio file using the file uploader component.
