@@ -32,7 +32,7 @@ pip install -r requirements.txt
 
 1. Make sure you have obtained a Pinecone API key. If not, sign up for a Pinecone account and create an API key.
 
-2. Open the `main.py` file and replace `'f9571b23-70be-4556-893a-7342b0bb51d1'` in the `pinecone.init()` function with your Pinecone API key.
+2. Open the `dVectorSA.py` file and replace `'f9571b23-70be-4556-893a-7342b0bb51d1'` in the `pinecone.init()` function with your Pinecone API key.
 
 3. Run the Streamlit app:
 
