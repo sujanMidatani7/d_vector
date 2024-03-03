@@ -19,7 +19,7 @@ git clone https://github.com/VVKMulukutla/d_vector.git
 2. Navigate to the project directory:
 
 ```shell
-cd your-repo
+cd d_vector
 ```
 
 3. Install the required dependencies:
@@ -54,5 +54,5 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 This project is licensed under the [GNU License](LICENSE).
 
-```
+
 
