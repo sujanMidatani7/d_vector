@@ -13,7 +13,7 @@ This is a Streamlit application that compares two audio samples using d-vectors.
 1. Clone the repository:
 
 ```shell
-git clone https://github.com/VVKMulukutla/d_vector.git
+git clone https://github.com/sujanMidatani7/d_vector.git
 ```
 
 2. Navigate to the project directory:
